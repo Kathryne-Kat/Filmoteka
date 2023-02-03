@@ -113,7 +113,7 @@ const onModalOpen =async e => {
   refs.watchedBtn.textContent = 'add to watched'; 
   refs.queueBtn.textContent='add to queue'; 
 const idFilm = e.target.dataset.id;
-console.log(idFilm);
+//console.log(idFilm);
 //console.log('112',arrFilmWatched);
   for (let el of arrFilmWatched) {
     //console.log('114', el);
@@ -178,7 +178,8 @@ const onTrailerClick = async e => {
 
   try {
     const data = await movieAPI.getFilmTlailer(idFilm);
-        //console.log('160', data.results[1].key); 
+        //console.log('181', data.results[0].key); 
+        //console.log('181', data.results);
     let keys = ''; 
     
     if (data.results.length === 0) {
@@ -187,12 +188,18 @@ const onTrailerClick = async e => {
       console.log('Movie trailer not found!');
       //  refs.backdropEl.classList.add('is-hidden'); 
       return;
-    } else {
+    } else if (data.results.length === 1){
+        keys=0
+    } else if (data.results.length > 1) {
       for (let i = 0; i < data.results.length; i++) {
         if (data.results[i].name.toLowerCase().includes('official trailer')) {
           keys = +i;
         }
-      }     
+    } 
+  }   
+      //console.log(keys); 
+      //console.log(screenWidth);
+      let keyTrailer=data.results[keys].key
 
       let widthV = 0;
       let heightV = 0;
@@ -214,15 +221,16 @@ const onTrailerClick = async e => {
                             type="text/html" 
                             width="${widthV}" 
                             height="${heightV}"
-                            src="https://www.youtube.com/embed/${data.results[keys].key}?autoplay=1&fs=1&origin=http://example.com"
+                            src="https://www.youtube.com/embed/${keyTrailer}?autoplay=1&fs=1&origin=http://example.com"
                             frameborder="0" />`
       refs.trailerIf.innerHTML = trailerMarkup;
-      console.log(trailerMarkup);
+      //console.log(trailerMarkup);
     }
-  } catch (err) {
+  catch (err) {
         console.log(err);
     }
-}
+  }
+
 
 const closeModal = () => {    
   refs.backdropEl.classList.add('is-hidden'); 
