@@ -1,4 +1,5 @@
-import axios from 'axios';
+import axios from "axios";
+//import axios from 'axios';
 
 export class MovieAPI {
   static BASE_URL = 'https://api.themoviedb.org/';

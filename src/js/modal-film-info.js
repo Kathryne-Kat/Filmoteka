@@ -1,4 +1,5 @@
-import { MovieAPI } from "./movie-api";
+import {MovieAPI} from './movie-api';
+//import { MovieAPI } from "./movie-api";
 
 const refs = {
     modalOpenEl: document.querySelector('.js-modal-open'),
