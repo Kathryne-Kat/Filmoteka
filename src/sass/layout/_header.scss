@@ -1,0 +1,324 @@
+header {
+  padding: 40px 20px 92px;
+}
+
+.header__picture-main {
+  width: 100%;
+  margin: 0 auto;
+  background: {
+    image: url(/src/images/background-mobile.jpg);
+    repeat: no-repeat;
+    position: center;
+  }
+
+  background-size: cover;
+  @include tablet {
+    // max-width: 768px;
+    width: 100%;
+    background: url(/src/images/background-tablet.jpg) center no-repeat;
+    padding: 40px 32px;
+    background-size: cover;
+  }
+  @include desktop {
+    // max-width: 1280px;
+    width: 100%;
+    background: url(/src/images/background.jpg) center no-repeat;
+    padding: 40px 32px;
+    background-size: cover;
+  }
+}
+.header__picture-library {
+  width: 100%;
+  margin: 0 auto;
+  height: 230px;
+  background: {
+    image: linear-gradient(rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)),
+      url(/src/images/background-mobile-library.jpg);
+    repeat: no-repeat;
+    position: center;
+    size: cover;
+  }
+  @include tablet {
+    height: 219px;
+    // max-width: 768px;
+    width: 100%;
+    background: linear-gradient(rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)),
+      url(/src/images/background-tablet-library.jpg) center no-repeat;
+    padding: 40px 32px;
+    background-size: cover;
+  }
+  @include desktop {
+    // max-width: 1280px;
+    width: 100%;
+    height: 216px;
+    background: linear-gradient(rgba(47, 48, 58, 0.4), rgba(47, 48, 58, 0.4)),
+      url(/src/images/background-library.jpg) center no-repeat;
+    padding: 40px 32px;
+    background-size: cover;
+  }
+}
+.header-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.container__header {
+  max-width: 280px;
+  width: 100%;
+  margin: 0 auto;
+  @include tablet {
+    max-width: 704px;
+  }
+  @include desktop {
+    max-width: 1216px;
+  }
+}
+.icon {
+  stroke: white;
+
+  transition-property: stroke;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.icon:hover,
+:focus,
+:active {
+      stroke: #ff6b01;
+      cursor: pointer;
+  
+}
+
+.logo__header {
+  color: snow;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+}
+.logo__header > span {
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 1.16;
+  display: none;
+  @include tablet {
+    display: block;
+  }
+}
+.header-navigation {
+  display: flex;
+  align-items: center;
+}
+
+.header-navigation__list {
+  display: flex;
+  gap: 39px;
+}
+
+.header-navigation__list > li {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.16;
+  color: white;
+}
+
+.form-search__input {
+  margin-top: 60px;
+  display: block;
+  border: transparent;
+  position: relative;
+  background-color: transparent;
+  border-bottom: 1px solid #ffffff;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.14;
+  color: white;
+  width: 100%;
+  max-width: 280px;
+  @include tablet {
+    max-width: 336px;
+    margin-top: 41px;
+    margin-bottom: 40px;
+  }
+  @include desktop {
+    max-width: 394px;
+  }
+
+        transition-property: color, border, border-bottom;
+        transition-duration: 250ms;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  &:focus,
+  &:active {
+    &::placeholder {
+      color: hsla(0, 0%, 100%, 0.5);
+    }
+
+    border: transparent;
+    background-color: transparent;
+    border-bottom: 1px solid #ff6b01;
+  }
+}
+
+.form-search__input:focus-visible {
+  outline: -webkit-focus-ring-color auto 0px;
+  border: transparent;
+  background-color: transparent;
+  border-bottom: 1px solid #ff6b01;
+
+  transition-property: border-bottom;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.input-wrapper {
+  margin: 0 auto;
+  position: relative;
+  max-width: 280px;
+  @include tablet {
+    max-width: 336px;
+  }
+  @include desktop {
+    width: 394px;
+  }
+}
+.input-wrapper > button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+}
+
+// .input-wrapper>button:focus-within~.icon {
+//   fill: #ff6b01;
+// }
+
+.input-wrapper svg {
+  width: 12px;
+  height: 12px;
+}
+
+.form-search__input::placeholder {
+  color: #ffffff;
+}
+
+.notify {
+  margin: 16px auto 0;
+  height: 32px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.14;
+  color: getColor('notify-failure-color');
+  @include tablet {
+    width: 394px;
+    height: 16px;
+  }
+}
+
+.menu__link {
+  position: relative;
+  color: #ffffff;
+
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menu__link:hover {
+  color: #ff6b01;
+}
+
+.menu__link-active::after {
+  content: '';
+  position: absolute;
+  top: 19px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: #f32121;
+}
+.header__library-btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 66px;
+  gap: 20px;
+  @include tablet {
+    margin-top: 40px;
+  }
+  @include desktop {
+    margin-top: 40px;
+  }
+}
+.library-btns {
+  text-transform: uppercase;
+  width: 129.53px;
+  height: 44px;
+  left: 170.47px;
+  top: 124px;
+  cursor: pointer;
+  background-color: transparent;
+  border-radius: 5px;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+
+  transition-property: background-color, border, box-shadow;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover,
+  &:focus {
+    border: none;
+    background: #ff6b01;
+    box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
+
+    transition-property: background-color, border, box-shadow;
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+.active {
+  border: none;
+  background: #ff6b01;
+  box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
+}
+
+//? Logo-animation
+
+.js-logo-animation {
+  text-shadow: 0 0 80px rgba(255, 255, 255, 0.5);
+
+  /* Clip Background Image */
+
+  background: url(https://i.ibb.co/RDTnNrT/animated-text-fill.png) repeat-y;
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  /* Animate Background Image */
+
+  color: transparent;
+  animation: aitf 80s linear infinite;
+
+  /* Activate hardware acceleration for smoother animations */
+
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+
+  /* Animate Background Image */
+
+  @keyframes aitf {
+    0% {
+      background-position: 0% 50%;
+    }
+
+    100% {
+      background-position: 100% 50%;
+    }
+  }
+}
+// End Logo-animation

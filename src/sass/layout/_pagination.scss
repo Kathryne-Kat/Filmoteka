@@ -1,0 +1,69 @@
+.tui-pagination {
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  margin: 40px 0;
+  @include tablet {
+    margin: 60px 0;
+  }
+}
+
+.tui-pagination .tui-next,
+.tui-pagination .tui-prev {
+  background: getColor('second-background-color');
+  border-radius: 5px;
+}
+
+.tui-pagination .tui-next {
+  margin-left: 0;
+}
+
+.tui-pagination .tui-prev {
+  margin-right: 0;
+}
+
+.tui-page-btn.tui-prev.hide-prev,
+.tui-pagination .tui-page-btn.tui-first,
+.tui-page-btn.tui-first.tui-is-disabled,
+.tui-page-btn.tui-next.hide-next,
+.tui-pagination .tui-page-btn.tui-last,
+.tui-page-btn.tui-last.tui-is-disabled,
+.tui-page-btn.tui-next-is-ellip.change-next,
+.tui-page-btn.tui-prev-is-ellip.change-prev {
+  display: none;
+}
+
+.tui-pagination .tui-page-btn {
+  display: flex;
+  border: none;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  color: getColor('text-color-dark');
+  font-family: Roboto, sans-serif;
+  font-size: 12px;
+  line-height: 1.33;
+  font-weight: 500;
+  transition: all $time-hover $time-function;
+  &:hover {
+    background: getColor('accent-color');
+    color: getColor('text-color-light');
+  }
+}
+
+.tui-pagination .tui-is-selected {
+  color: getColor('background-color');
+  background: getColor('accent-color');
+}
+
+.tui-pagination .tui-is-disabled:hover {
+  background: transparent;
+  border: none;
+}
+
+.tui-pagination .tui-is-selected:hover {
+  background: getColor('accent-color');
+}

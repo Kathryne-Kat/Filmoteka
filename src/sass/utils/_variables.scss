@@ -1,0 +1,16 @@
+$color: (
+  'text-color-light': #ffffff,
+  'text-color-dark': #000000,
+  'accent-color': #ff6b08,
+  'background-color': #ffffff,
+  'second-background-color': #f7f7f7,
+  'button-active-color': #ff6b01,
+  'notify-failure-color': #FF001B,
+);
+
+@function getColor($key) {
+  @return map-get($color, $key);
+};
+
+$time-hover: 250ms;
+$time-function: cubic-bezier(0.4, 0, 0.2, 1);

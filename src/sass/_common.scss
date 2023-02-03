@@ -1,0 +1,72 @@
+@import '~node_modules/modern-normalize/modern-normalize.css';
+
+body {
+  font-family: Roboto, sans-serif;
+  font-weight: 500;
+  background-color: getColor('background-color');
+  &.no-scroll {
+    overflow: hidden;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.section {
+  padding-top: 60px;
+}
+
+.btn {
+  border-radius: 5px;
+  transition: color $time-hover $time-function,
+    background-color $time-hover $time-function,
+    border-color $time-hover $time-function;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  opacity: 1;
+  transition: opacity $time-hover $time-function,
+    visibility $time-hover $time-function;
+  &.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+}

@@ -1,0 +1,180 @@
+// // Toma K
+
+/* section - контейнер розтягується на весь екран */
+.section__gallery {
+  width: 100%;
+  background-color: #ffffff;
+}
+
+/* div - блок для контенту */
+.gallery__container {
+  // outline: 1px solid tomato;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+  padding-bottom: 40px;
+
+  @include tablet {
+    padding-left: 32px;
+    padding-right: 32px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    max-width: calc(336 * 2 + 32 + 64);
+  }
+  @include desktop {
+    max-width: calc(395 * 3 + 16 * 2 + 64);
+  }
+}
+
+/* h2 - заголовок секції */
+/* is-hidden */
+
+/* ul - контейнер для списку фільмів*/
+.card-list {
+  // outline: 1px solid tomato;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 20px;
+
+  @include tablet {
+    gap: 32px;
+  }
+  @include desktop {
+    column-gap: 16px;
+  }
+}
+
+/* li - елемент списку фільмів */
+.card-list__item {
+  // outline: 1px solid tomato;
+  width: 100%;
+  max-width: 480px;
+
+  position: relative;
+
+  transition-property: transform;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+  @include tablet {
+    max-width: 336px;
+  }
+  @include desktop {
+    max-width: 395px;
+  }
+}
+
+.card-list__item:hover {
+  transform: scale(1.02);
+}
+
+/* - обкладинка фільму - назва жанр рік */
+
+/* - бокс постера фільму */
+.card-list__img-box {
+  // outline: 1px solid tomato;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include tablet {
+    height: 455px;
+  }
+  @include desktop {
+    height: 574px;
+  }
+}
+
+/* - постер фільму */
+
+.card-list__img {
+  width: 100%;
+
+  border-radius: 5px;
+  background: #e5e5e5;
+
+  @include tablet {
+    max-height: 455px;
+  }
+
+  @include desktop {
+    max-height: 574px;
+  }
+}
+
+/* div - огортає опис */
+.card-list__info-box {
+  outline: 1px solid tomato;
+}
+
+/* - властивості фільму - назва жанр рік */
+.card-list__title,
+.card-list__text {
+  // outline: 1px solid tomato;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: calc(14 / 12);
+
+  @include tablet {
+    line-height: calc(16 / 12);
+  }
+
+  @include desktop {
+    font-size: 20px;
+    line-height: calc(24 / 20);
+  }
+}
+
+.card-list__title {
+  text-transform: uppercase;
+  color: #000000;
+
+  padding-top: 10px;
+
+  @include tablet {
+    padding-top: 8px;
+  }
+
+  @include desktop {
+    padding-top: 12px;
+  }
+}
+
+.card-list__text {
+  color: #ff6b08;
+}
+
+// позиціонування жанрів, року і рейтингу в 1 строчку
+.card-list__info {
+  display: inline-flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.card-list__rate-box {
+  width: 40px;
+  height: 20px;
+
+  background: #ff6b01;
+  border-radius: 5px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-list__rate {
+  font-family: 'Roboto';
+  font-size: 12px;
+  line-height: 14px;
+  text-transform: uppercase;
+
+  color: #ffffff;
+}

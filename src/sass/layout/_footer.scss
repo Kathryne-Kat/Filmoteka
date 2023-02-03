@@ -1,0 +1,101 @@
+.footer{
+   background-color: #F7F7F7;
+}
+
+.footer__page{
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+    padding-top: 28.7px;
+    padding-bottom: 29.7px;
+    background-color: #F7F7F7;
+
+@include tablet {
+    max-width: 768px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    }
+@include desktop {
+    max-width: 1280px;
+    padding-top: 30px;
+    padding-bottom: 28px;
+    }
+}
+
+.footer_main{
+    justify-content: center;
+@include tablet {
+    display: flex;
+    gap: 0px;
+    justify-content: center;
+    }
+}
+
+.footer-info {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #545454;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.14;
+
+@media screen and (max-width: 767px) {
+    text-align: center;
+    }
+
+@include tablet {
+    font-size: 16px;
+    line-height: 1.19;
+    margin-bottom: 0;
+    }
+}
+
+.footer-text {
+    margin-top: 0;
+    margin-bottom: 0;
+    color: #545454;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.14;
+
+@media screen and (max-width: 767px) {
+    text-align: center;
+    }
+
+@include tablet {
+    font-size: 16px;
+    line-height: 1.19;
+    }
+}
+
+.footer-icon-heart {
+    position: relative;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.footer-link {
+    margin-top: 0;
+    margin-bottom: 0;
+    color: #545454;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.14;
+    cursor: pointer;
+    text-decoration: underline;
+
+    &:focus,
+    &:hover {
+      color: #FF6B08;
+    }
+
+@media screen and (max-width: 767px) {
+    text-align: center;
+    }
+    
+@include tablet {
+    font-size: 16px;
+    line-height: 1.19;
+    }
+}
+
