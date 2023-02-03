@@ -67,9 +67,13 @@
   width: 40px;
   height: 40px;
   color: #000000;
+
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   &:hover {
     cursor: pointer;
-    color: #fc9207;
+    color: #ff6b01;
   }
 }
 .description-close-icon {
@@ -248,9 +252,13 @@ p.description-modal_about {
   color: #ffffff;
   border: none;
   margin-right: 15px;
+
+  transition-property: background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   &:hover {
     //color: #535252;
-    background-color: #fc842f;
+    background-color: #fb8904;
     border: none;
   }
 }
@@ -258,10 +266,15 @@ p.description-modal_about {
   border: 1px solid #000000;
   color: #000000;
   background-color: #ffffff;
+
+  transition-property: border;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
   &:hover {
     //color: #fc842f;
     //background-color: #fc842f;
-    border: 2px solid #fc842f;
+    border: 2px solid #ff6b01;
   }
 }
 

@@ -78,7 +78,7 @@ export function renderWatched() {
 
 function renderQueue() {
   document.querySelector('.gallery__container .gallery__card-list').innerHTML =
-    ' ';
+    '';
   const arrQueueId = loadFromLS('filmQueue');
   onQueueBtnClick();
   if (!arrQueueId || arrQueueId.length === 0) {
@@ -104,17 +104,11 @@ function onQueueBtnClick() {
 
 function showNothingInLibrary() {
   document.querySelector(
-    '.gallery__container .gallery__card-list'
+    '.gallery__container'
   ).innerHTML = `
-  <li>Sorry...</li>
-  <li>
-   <a>
-      <p class="library__text"> No movies have been added yet. Let's go pick something to your liking!</p>
-      <img class="library__picture" src="../images/no-films-img-min.jpg" alt="Nothing to show picture">
-    </a>
-    </li>
-    
+    <li class="library__heading-txt">Sorry... :(</li>   
+    <li class="library__txt-upper"> No movies have been added yet.</li>
+    <li class="library__txt-down"> Let's go pick something to your liking!</li>
+    <input class="library-btns active nothing-to-show" type="button" onclick="history.back();" value="Go to home"/>
   `;
-  // Не треба виводити пагінацію
-  //   pagination.style.display = 'none';
 }

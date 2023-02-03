@@ -147,10 +147,9 @@ const idFilm = e.target.dataset.id;
 
 const onBtnWatchedClick=e=>{
   e.preventDefault();
-  const idFilm=refs.watchedBtn.dataset.filmId
   refs.watchedBtn.classList.add('disable');
   refs.watchedBtn.textContent='added to watched'; 
-  
+  const idFilm=refs.watchedBtn.dataset.filmId
   arrFilmWatched.push(idFilm)
   const filterArrFilmWatched = arrFilmWatched.filter((value, i, arr) => arr.indexOf(value) === i);
   saveToLS('filmWatched', filterArrFilmWatched)

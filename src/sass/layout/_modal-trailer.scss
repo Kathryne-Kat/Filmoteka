@@ -4,12 +4,17 @@
   background: #ff6b01;
   color: #ffffff;
   border: none;
+
+  transition-property: background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
   @include tablet {
     width: 292px;
   }
   &:hover {
     //color: #535252;
-    background-color: #fc842f;
+    background-color: #fb8904;
     border: none;
   }
 }
@@ -87,15 +92,15 @@
   color: #ffffffd5;
   &:hover {
     cursor: pointer;
-    color: #fc9207;
+    color: #ff6b01;
   }
 }
 .description-close-icon-v {
   fill: currentColor;
 }
 
-.videoww {
-}
+// .videoww {
+// }
 
-.not_found {
-}
+// .not_found {
+// }
