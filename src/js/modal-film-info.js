@@ -107,11 +107,13 @@ let arrFilmQueue = loadToLS('filmQueue');
 
 const onModalOpen =async e => {
   e.preventDefault(); 
+  
   refs.queueBtn.classList.remove('disable');
   refs.watchedBtn.classList.remove('disable');
   refs.watchedBtn.textContent = 'add to watched'; 
   refs.queueBtn.textContent='add to queue'; 
 const idFilm = e.target.dataset.id;
+console.log(idFilm);
 //console.log('112',arrFilmWatched);
   for (let el of arrFilmWatched) {
     //console.log('114', el);
