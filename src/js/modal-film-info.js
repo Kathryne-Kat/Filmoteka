@@ -179,7 +179,7 @@ const onTrailerClick = async e => {
   try {
     const data = await movieAPI.getFilmTlailer(idFilm);
         //console.log('181', data.results[0].key); 
-        //console.log('181', data.results);
+        console.log('181', data.results);
     let keys = ''; 
     
     if (data.results.length === 0) {
@@ -194,7 +194,10 @@ const onTrailerClick = async e => {
       for (let i = 0; i < data.results.length; i++) {
         if (data.results[i].name.toLowerCase().includes('official trailer')) {
           keys = +i;
+        }else{
+          keys=0
         }
+        
     } 
   }   
       //console.log(keys); 
