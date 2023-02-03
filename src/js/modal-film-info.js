@@ -23,7 +23,7 @@ export const createCards = cardInfo => {
     const { poster_path, title, vote_average, vote_count, popularity, original_title, genres, overview,id } = cardInfo
   const genresEl = [];
   //console.log(cardInfo);
-    for (genre of genres) {
+    for (let genre of genres) {
         genresEl.push(genre.name);        
     }
     refs.watchedBtn.dataset.filmId = id;
@@ -107,7 +107,7 @@ let arrFilmQueue = loadToLS('filmQueue');
 
 const onModalOpen =async e => {
   e.preventDefault(); 
-  
+
   refs.queueBtn.classList.remove('disable');
   refs.watchedBtn.classList.remove('disable');
   refs.watchedBtn.textContent = 'add to watched'; 
