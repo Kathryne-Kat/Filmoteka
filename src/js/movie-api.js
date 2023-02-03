@@ -2,7 +2,8 @@ import axios from 'axios';
 
 export class MovieAPI {
   static BASE_URL = 'https://api.themoviedb.org/';
-  static API_KEY = 'a95ff59f8d48ac961c2785119723c43c';
+  static API_KEY = '25e4eeadea4cf520d825a9bf9fd0e85d';
+  //'a95ff59f8d48ac961c2785119723c43c';
 
   constructor() {}
 
