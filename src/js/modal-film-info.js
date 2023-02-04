@@ -1,4 +1,5 @@
 import {MovieAPI} from './movie-api';
+import { renderQueue, renderWatched } from './filter';
 //import { MovieAPI } from "./movie-api";
 
 const refs = {
@@ -15,6 +16,8 @@ const refs = {
     backdropElV: document.querySelector('.js-backdrop-video'),
   closeModalElV: document.querySelector('.js-modal-close-video'),
     errF:document.querySelector('.not_found'),
+    btnWatchedEl: document.querySelector('.js-btn-watched'),
+  btnQueueEl: document.querySelector('.js-btn-queue'),
 };
 
 const movieAPI = new MovieAPI();
@@ -107,9 +110,8 @@ let arrFilmQueue = loadToLS('filmQueue');
 
 const onModalOpen =async e => {
   e.preventDefault(); 
-
-  refs.queueBtn.classList.remove('disable');
-  refs.watchedBtn.classList.remove('disable');
+  // refs.queueBtn.classList.remove('disable');
+  // refs.watchedBtn.classList.remove('disable');
   refs.watchedBtn.textContent = 'add to watched'; 
   refs.queueBtn.textContent='add to queue'; 
 const idFilm = e.target.dataset.id;
@@ -119,15 +121,15 @@ const idFilm = e.target.dataset.id;
     //console.log('114', el);
     //console.log('115',idFilm);
     if (+el === +idFilm) {
-      refs.watchedBtn.classList.add('disable');
-    refs.watchedBtn.textContent='added to watched';   
+      //refs.watchedBtn.classList.add('disable');
+    refs.watchedBtn.textContent='remove to watched';   
   }
   }
   for (let el of arrFilmQueue) {
     //console.log('120',el);
     if (+el === +idFilm) {
-      refs.queueBtn.classList.add('disable');
-    refs.queueBtn.textContent='added to queue';   
+      //refs.queueBtn.classList.add('disable');
+    refs.queueBtn.textContent='remove to queue';   
     } 
 }
   
@@ -150,22 +152,49 @@ const idFilm = e.target.dataset.id;
 
 const onBtnWatchedClick=e=>{
   e.preventDefault();
-  refs.watchedBtn.classList.add('disable');
-  refs.watchedBtn.textContent='added to watched'; 
+  //refs.watchedBtn.classList.add('disable');
+  //refs.watchedBtn.classList.add('active');
+  refs.watchedBtn.textContent='remove to watched'; 
   const idFilm=refs.watchedBtn.dataset.filmId
-  arrFilmWatched.push(idFilm)
-  const filterArrFilmWatched = arrFilmWatched.filter((value, i, arr) => arr.indexOf(value) === i);
-  saveToLS('filmWatched', filterArrFilmWatched)
+  // console.log(idFilm);
+  // console.log(arrFilmWatched);
+  let findId=arrFilmWatched.find(el=>+el ===+idFilm)
+  //console.log('158',findId);
+  if(findId){
+    arrFilmWatched.splice(arrFilmWatched.findIndex(film=>+film===+idFilm), 1);
+   // console.log(arrFilmWatched);
+    saveToLS('filmWatched', arrFilmWatched)  
+    refs.watchedBtn.textContent ='add to watched';
+  }else{
+    arrFilmWatched.push(idFilm)  /
+    saveToLS('filmWatched', arrFilmWatched)
+  }
+  if (window.location.pathname === '/library.html' && refs.btnWatchedEl.classList.contains("active")) {
+      renderWatched()    
+  }  
 }
 
 const onBtnQueueClick= e=>{
   e.preventDefault();  
-  refs.queueBtn.classList.add('disable');
-  refs.queueBtn.textContent='added to queue'; 
+  //refs.queueBtn.classList.add('disable');
+  refs.queueBtn.textContent='remove to queue'; 
   const idFilm=refs.queueBtn.dataset.filmId
-  arrFilmQueue.push(idFilm)
-  const filterArrFilmQueue=arrFilmQueue.filter((value, i, arr)=>arr.indexOf(value)===i)    
-  saveToLS('filmQueue', filterArrFilmQueue)   
+  // console.log(idFilm);
+  // console.log(arrFilmQueue);
+  let findId=arrFilmQueue.find(el=>+el ===+idFilm)
+  //console.log('158',findId);
+  if(findId){
+    arrFilmQueue.splice(arrFilmQueue.findIndex(film=>+film===+idFilm), 1);
+   // console.log(arrFilmQueue);
+    saveToLS('filmQueue', arrFilmQueue)  
+    refs.queueBtn.textContent ='add to queue';
+  }else{
+    arrFilmQueue.push(idFilm)  /
+    saveToLS('filmQueue', arrFilmQueue)
+  }
+  if (window.location.pathname === '/library.html' && refs.btnQueueEl.classList.contains("active")) {
+      renderQueue()    
+  }
 }
 
 const screenWidth = window.screen.width

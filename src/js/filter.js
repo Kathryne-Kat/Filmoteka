@@ -76,7 +76,7 @@ export function renderWatched() {
   }
 }
 
-function renderQueue() {
+export function renderQueue() {
   document.querySelector('.gallery__container .gallery__card-list').innerHTML =
     '';
   const arrQueueId = loadFromLS('filmQueue');
