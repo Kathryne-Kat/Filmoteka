@@ -2,7 +2,6 @@ import { MovieAPI } from './movie-api';
 import { createGallery } from './create-card';
 import { createPagination } from './pagination';
 
-
 let movieApiMain = new MovieAPI();
 
 function getMoviesPagination() {
@@ -26,7 +25,7 @@ function getMoviesPagination() {
 getMoviesPagination();
 
 export function watchedPagination(watched) {
-    const pagination = createPagination(watched.length, 20, 7, 1);
+  const pagination = createPagination(watched.length, 20, 7, 1);
   pagination.on('afterMove', async event => {
     const page = event.page - 1;
     createGallery(watched.slice(page * 20, (page + 1) * 20));

@@ -20,52 +20,15 @@ const loadFromLS = key => {
   }
 };
 
-const actionPage = document.querySelector('.menu__link-active');
-if (actionPage.dataset.action === 'library') {
-  renderPageLibrary();
-}
-
-async function renderPageLibrary(event) {
-  refs.btnWatchedEl.classList.remove('active');
-  refs.btnQueueEl.classList.remove('active');
-
-  renderAllList();
-
-  refs.btnWatchedEl.addEventListener('click', renderWatched);
-  refs.btnQueueEl.addEventListener('click', renderQueue);
-}
-
-function renderAllList() {
-  document.querySelector('.gallery__container .gallery__card-list').innerHTML =
-    '';
-  let arrWatchedId = [];
-  let arrQueueId = [];
-  if (loadFromLS('filmWatched')) {
-    arrWatchedId = loadFromLS('filmWatched');
-  }
-  if (loadFromLS('filmQueue')) {
-    arrQueueId = loadFromLS('filmQueue');
-  }
-  const arrAllFilmsId = [...arrWatchedId, ...arrQueueId];
-  if (arrWatchedId.length === 0 && arrQueueId.length === 0) {
-    showNothingInLibrary();
-  } else {
-    const films = arrAllFilmsId.map(id => instance.getFilmFullInfo(id));
-    Promise.all(films).then(response => {
-      createGallery(response);
-    });
-  }
-}
-
-export function renderWatched() {
-  document.querySelector('.gallery__container .gallery__card-list').innerHTML =
-    '';
+export async function renderWatched() {
+  //document.querySelector('.gallery__container .gallery__card-list').innerHTML =    '';
   // Масив айдішек
   const arrWatchedId = loadFromLS('filmWatched');
-  // console.log('arrWatchedId*', arrWatchedId);
-
-  onWatchedBtnClick();
-  if (!arrWatchedId || arrWatchedId.length === 0) {
+  console.log('arrWatchedId*', arrWatchedId);
+  refs.btnQueueEl.classList.remove('active');
+  refs.btnWatchedEl.classList.add('active');
+  //onWatchedBtnClick();
+  if (arrWatchedId.length === 0) {
     showNothingInLibrary();
   } else {
     const films = arrWatchedId.map(id => instance.getFilmFullInfo(id));
@@ -76,39 +39,79 @@ export function renderWatched() {
   }
 }
 
-export function renderQueue() {
-  document.querySelector('.gallery__container .gallery__card-list').innerHTML =
-    '';
+export async function renderQueue() {
+  //document.querySelector('.gallery__container .gallery__card-list').innerHTML =    '';
   const arrQueueId = loadFromLS('filmQueue');
-  onQueueBtnClick();
-  if (!arrQueueId || arrQueueId.length === 0) {
+  //onQueueBtnClick();
+  refs.btnWatchedEl.classList.remove('active');
+  refs.btnQueueEl.classList.add('active');
+  if (arrQueueId.length === 0) {
     showNothingInLibrary();
   } else {
     const films = arrQueueId.map(id => instance.getFilmFullInfo(id));
     Promise.all(films).then(response => {
-        watchedPagination(response);
+      watchedPagination(response);
       createGallery(response);
     });
   }
 }
 
-function onWatchedBtnClick() {
-  refs.btnQueueEl.classList.remove('active');
-  refs.btnWatchedEl.classList.add('active');
-}
+// function onWatchedBtnClick() {
+//   refs.btnQueueEl.classList.remove('active');
+//   refs.btnWatchedEl.classList.add('active');
+// }
 
-function onQueueBtnClick() {
-  refs.btnWatchedEl.classList.remove('active');
-  refs.btnQueueEl.classList.add('active');
-}
+// function onQueueBtnClick() {
+//   refs.btnWatchedEl.classList.remove('active');
+//   refs.btnQueueEl.classList.add('active');
+// }
 
 function showNothingInLibrary() {
-  document.querySelector(
-    '.gallery__container'
-  ).innerHTML = `
+  document.querySelector('.gallery__container').innerHTML = `
     <li class="library__heading-txt">Sorry... :(</li>   
     <li class="library__txt-upper"> No movies have been added yet.</li>
     <li class="library__txt-down"> Let's go pick something to your liking!</li>
     <input class="library-btns active nothing-to-show" type="button" onclick="history.back();" value="Go to home"/>
   `;
 }
+// refs.btnWatchedEl.addEventListener('click', renderWatched);
+// refs.btnQueueEl.addEventListener('click', renderQueue);
+
+// const actionPage = document.querySelector('.menu__link-active');
+// if (actionPage.dataset.action === 'library') {
+//   renderWatched();
+//   //renderPageLibrary();
+// }
+
+// async function renderPageLibrary(event) {
+//   refs.btnWatchedEl.classList.remove('active');
+//   refs.btnQueueEl.classList.remove('active');
+//   renderWatched();
+//   renderQueue();
+//   //renderAllList();
+
+//   refs.btnWatchedEl.addEventListener('click', renderWatched);
+//   refs.btnQueueEl.addEventListener('click', renderQueue);
+// }
+
+// function renderAllList() {
+//   document.querySelector('.gallery__container .gallery__card-list').innerHTML =
+//     '';
+//   let arrWatchedId = [];
+//   let arrQueueId = [];
+//   if (loadFromLS('filmWatched')) {
+//     arrWatchedId = loadFromLS('filmWatched');
+//   }
+//   if (loadFromLS('filmQueue')) {
+//     arrQueueId = loadFromLS('filmQueue');
+//   }
+//   const arrAllFilmsId = [...arrWatchedId, ...arrQueueId];
+//   if (arrWatchedId.length === 0 && arrQueueId.length === 0) {
+//     showNothingInLibrary();
+//   } else {
+//     const films = arrAllFilmsId.map(id => instance.getFilmFullInfo(id));
+//     Promise.all(films).then(response => {
+//       createGallery(response);
+//     });
+//   }
+// }
