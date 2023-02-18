@@ -181,7 +181,8 @@ const onBtnWatchedClick = e => {
     saveToLS('filmWatched', arrFilmWatched);
     refs.watchedBtn.textContent = 'add to watched';
   } else {
-    arrFilmWatched.push(idFilm) / saveToLS('filmWatched', arrFilmWatched);
+    arrFilmWatched.push(idFilm);
+    saveToLS('filmWatched', arrFilmWatched);
   }
   if (
     window.location.pathname === '/library.html' &&
@@ -209,7 +210,8 @@ const onBtnQueueClick = e => {
     saveToLS('filmQueue', arrFilmQueue);
     refs.queueBtn.textContent = 'add to queue';
   } else {
-    arrFilmQueue.push(idFilm) / saveToLS('filmQueue', arrFilmQueue);
+    arrFilmQueue.push(idFilm);
+    saveToLS('filmQueue', arrFilmQueue);
   }
   if (
     window.location.pathname === '/library.html' &&
