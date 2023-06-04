@@ -40,7 +40,8 @@ if (actionPage.dataset.action === 'library') {
 // }
 
 export async function renderWatched() {
-  // document.querySelector('.gallery__container .gallery__card-list').innerHTML ='';
+  document.querySelector('.gallery__container .gallery__card-list').innerHTML =
+    '';
   // Масив айдішек
   const arrWatchedId = loadFromLS('filmWatched');
   console.log('arrWatchedId*', arrWatchedId);
@@ -50,7 +51,7 @@ export async function renderWatched() {
   if (!arrWatchedId || arrWatchedId.length === 0) {
     showNothingInLibrary();
   }
-  if(arrWatchedId.length !== 0) {
+  if (arrWatchedId.length !== 0) {
     const films = arrWatchedId.map(id => instance.getFilmFullInfo(id));
     Promise.all(films).then(response => {
       watchedPagination(response);
@@ -60,7 +61,8 @@ export async function renderWatched() {
 }
 
 export async function renderQueue() {
-  // document.querySelector('.gallery__container .gallery__card-list').innerHTML ='';
+  document.querySelector('.gallery__container .gallery__card-list').innerHTML =
+    '';
   const arrQueueId = loadFromLS('filmQueue');
   console.log('arrQueueId*', arrQueueId);
   //onQueueBtnClick();
@@ -68,8 +70,8 @@ export async function renderQueue() {
   refs.btnQueueEl.classList.add('active');
   if (!arrQueueId || arrQueueId.length === 0) {
     showNothingInLibrary();
-  } 
-  if(arrQueueId.length !== 0) {
+  }
+  if (arrQueueId.length !== 0) {
     const films = arrQueueId.map(id => instance.getFilmFullInfo(id));
     Promise.all(films).then(response => {
       watchedPagination(response);
@@ -79,20 +81,16 @@ export async function renderQueue() {
 }
 
 function showNothingInLibrary() {
-  // const arrQueueId = loadFromLS('filmQueue');
-  // if (arrQueueId.length !== 0) {
-  //   refs.btnQueueEl.addEventListener('click', renderQueue);
-  // }
-  // const arrWatchedId = loadFromLS('filmWatched');
-  // if (arrWatchedId.length !== 0) {
-  //   refs.btnWatchedEl.addEventListener('click', renderWatched);
-  // }
-  document.querySelector('.gallery__container').innerHTML = `
-    <li class="library__heading-txt">Sorry... :(</li>   
-    <li class="library__txt-upper"> No movies have been added yet.</li>
-    <li class="library__txt-down"> Let's go pick something to your liking!</li>
-    <input class="library-btns active nothing-to-show" type="button" onclick="history.back();" value="Go to home"/>
-  `;
+  document.querySelector('.gallery__container .gallery__card-list').innerHTML = `       
+      <input class="library-btns active nothing-to-show" type="button" onclick="history.back();" value="Go to home"/>
+    `;
+  // document.querySelector('.gallery__container').insertAdjacentHTML(
+  //   'beforeend',
+  //   `<li class="library__heading-txt">Sorry... :(</li>      <li class="library__txt-upper"> No movies have been added yet.</li>
+  //   <li class="library__txt-down"> Let's go pick something to your liking!</li>
+  //   <input class="library-btns active nothing-to-show" type="button" onclick="history.back();" value="Go to home"/>
+  // `
+  // );
 }
 
 //щось моє
