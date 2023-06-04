@@ -23,31 +23,34 @@ const actionPage = document.querySelector('.menu__link-active');
 if (actionPage.dataset.action === 'library') {
   //renderWatched();
   //renderQueue();
-  renderPageLibrary();
-}
-
-async function renderPageLibrary(event) {
-  refs.btnWatchedEl.classList.remove('active');
-  refs.btnQueueEl.classList.remove('active');
-  renderWatched();
-  renderQueue();
-  //renderAllList();
-
   refs.btnWatchedEl.addEventListener('click', renderWatched);
   refs.btnQueueEl.addEventListener('click', renderQueue);
+  // renderPageLibrary();
 }
 
+// async function renderPageLibrary(event) {
+//   // refs.btnWatchedEl.classList.remove('active');
+//   // refs.btnQueueEl.classList.remove('active');
+//   // renderWatched();
+//   // renderQueue();
+//   //renderAllList();
+
+//   refs.btnWatchedEl.addEventListener('click', renderWatched);
+//   refs.btnQueueEl.addEventListener('click', renderQueue);
+// }
+
 export async function renderWatched() {
-  //document.querySelector('.gallery__container .gallery__card-list').innerHTML =    '';
+  // document.querySelector('.gallery__container .gallery__card-list').innerHTML ='';
   // Масив айдішек
   const arrWatchedId = loadFromLS('filmWatched');
   console.log('arrWatchedId*', arrWatchedId);
   refs.btnQueueEl.classList.remove('active');
   refs.btnWatchedEl.classList.add('active');
   //onWatchedBtnClick();
-  if (arrWatchedId.length === 0) {
+  if (!arrWatchedId || arrWatchedId.length === 0) {
     showNothingInLibrary();
-  } else {
+  }
+  if(arrWatchedId.length !== 0) {
     const films = arrWatchedId.map(id => instance.getFilmFullInfo(id));
     Promise.all(films).then(response => {
       watchedPagination(response);
@@ -57,15 +60,16 @@ export async function renderWatched() {
 }
 
 export async function renderQueue() {
-  //document.querySelector('.gallery__container .gallery__card-list').innerHTML = '';
+  // document.querySelector('.gallery__container .gallery__card-list').innerHTML ='';
   const arrQueueId = loadFromLS('filmQueue');
   console.log('arrQueueId*', arrQueueId);
   //onQueueBtnClick();
   refs.btnWatchedEl.classList.remove('active');
   refs.btnQueueEl.classList.add('active');
-  if (arrQueueId.length === 0) {
+  if (!arrQueueId || arrQueueId.length === 0) {
     showNothingInLibrary();
-  } else {
+  } 
+  if(arrQueueId.length !== 0) {
     const films = arrQueueId.map(id => instance.getFilmFullInfo(id));
     Promise.all(films).then(response => {
       watchedPagination(response);
@@ -75,6 +79,14 @@ export async function renderQueue() {
 }
 
 function showNothingInLibrary() {
+  // const arrQueueId = loadFromLS('filmQueue');
+  // if (arrQueueId.length !== 0) {
+  //   refs.btnQueueEl.addEventListener('click', renderQueue);
+  // }
+  // const arrWatchedId = loadFromLS('filmWatched');
+  // if (arrWatchedId.length !== 0) {
+  //   refs.btnWatchedEl.addEventListener('click', renderWatched);
+  // }
   document.querySelector('.gallery__container').innerHTML = `
     <li class="library__heading-txt">Sorry... :(</li>   
     <li class="library__txt-upper"> No movies have been added yet.</li>
